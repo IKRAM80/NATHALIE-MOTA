@@ -7,3 +7,8 @@ function register_my_menu(){
     register_nav_menu('footer', "Menu pied de page");
  }
  add_action('after_setup_theme', 'register_my_menu');
+
+ add_action('wp_enqueue_scripts', 'nathalie_mota_enqueue_styles');
+function nathalie_mota_enqueue_styles() {
+    wp_enqueue_style('parent-style', get_template_directory_uri() . '/assets/scss/theme.css');
+}
