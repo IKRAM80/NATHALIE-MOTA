@@ -9,19 +9,15 @@
 <body>
     <?php wp_body_open(); ?>
     <header class="header">
-        <?php
-            if ( get_theme_mod( 'your_theme_logo' ) ) : ?>
-            <a href="<?php echo home_url(); ?>">
-                <img class="header__logo" src="<?php echo get_theme_mod( 'your_theme_logo' ); ?>" alt="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" >
-            </a>
-        <?php //
-            else : ?>
-                <h1 class="site-title"><?php bloginfo( 'name' ); ?></h1>
-        <?php endif;
-        ?>
-        <div class="header__navDesktop">
+    <div class="logo">
+			<a href="<?php echo home_url( '/' ); ?>" aria-label="Page d'accueil de Nathalie Mota">
+				<img src="<?php echo get_template_directory_uri(); ?>/assets/img/logo_nathalie_mota.png" 
+				alt="Logo <?php echo bloginfo('name'); ?>">
+			</a>
+    </div>        
+    <div class="header__navDesktop">
             <?php wp_nav_menu(array('theme_location' => 'main')); ?>
-        </div>
+    </div>
 
 
 
