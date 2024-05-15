@@ -5,6 +5,6 @@ jQuery(document).ready(function($) {
     localStorage.clear();// vide le stockage local du navigateur
 
     initializeMenu();//initialisation du menu de navigation burger
-    
+    initializeModal();
     
 });
