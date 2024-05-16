@@ -2,12 +2,30 @@
 // créer un lien pour la gestion des menus dans l'administration
 // et activation d'un menu pour le header et d'un menu pour le footer
 // Visibles ensuite dans Apparence / Menus (after_setup_theme)
-function register_my_menu(){
-    register_nav_menu('main', "Menu principal");
-    register_nav_menu('footer', "Menu pied de page");
- }
- add_action('after_setup_theme', 'register_my_menu');
 
+
+
+function nathalie_mota_supports() {
+    add_theme_support( 'title-tag' );
+    add_theme_support( 'post-thumbnails' );
+    add_theme_support( 'menus' );
+    register_nav_menu( 'main', 'Menu principal' );
+    register_nav_menu( 'footer', 'Menu pied de page' );
+}
+
+add_action( 'after_setup_theme', 'nathalie_mota_supports' );
+
+// Btn CONTACT
+ function add_elements_menus($items, $args) {
+    if ($args->theme_location == 'main') { 
+        $items .= '<li class="menu-item contact-btn">CONTACT</li>'; // Ajoutez le nouvel élément "CONTACT"
+    }
+    elseif ($args->theme_location == 'footer') { 
+        $items .= '<li class="menu-item"> TOUS DROITS RÉSERVÉS </li>'; // Ajoutez un autre élément au menu de pied de page
+    }
+    return $items;
+}
+add_filter('wp_nav_menu_items', 'add_elements_menus', 10, 2);
 
 // Enqueuing
 
