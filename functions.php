@@ -15,7 +15,7 @@ function nathalie_mota_supports() {
 
 add_action( 'after_setup_theme', 'nathalie_mota_supports' );
 
-// Btn CONTACT
+// Hook Btn CONTACT
  function add_elements_menus($items, $args) {
     if ($args->theme_location == 'main') { 
         $items .= '<li class="menu-item contact-btn">CONTACT</li>'; // Ajoutez le nouvel élément "CONTACT"
