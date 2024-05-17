@@ -1,7 +1,7 @@
 function initializeModal() {
-    const contactBtns = jQuery(".menu-item-51 a, .contact-btn");
+    const contactBtns = jQuery(".menu-item-19 li, .contact-btn");
     const modalForm = jQuery(".modal-overlay");
-    const modalContent = jQuery("#wpcf7-f25-o1");
+    const modalContent = jQuery("#wpcf7-f28-o1");
     const formRefDiv = jQuery(".formRef");
 
     contactBtns.click(openForm);
