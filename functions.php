@@ -41,3 +41,5 @@ add_filter('wp_nav_menu_items', 'add_elements_menus', 10, 2);
      wp_enqueue_script('modal-script', get_template_directory_uri() . '/assets/js/modules/modal.js', array('jquery'), null, true);
  }
  
+// Enlever <p> et <br/> de Contact Form 7
+add_filter('wpcf7_autop_or_not', '__return_false');
