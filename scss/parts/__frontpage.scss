@@ -1,0 +1,59 @@
+.home-content{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .hero {
+        width: 100%;
+        position: relative;
+        margin-bottom: 80px;
+        
+        @media (max-width: 1024px) {
+            margin-bottom: 26px;
+        }
+
+        &__title {
+            font-size: 96px;
+            margin:0;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: transparent; /* Set the text fill to transparent */
+            -webkit-text-stroke: 3px white;
+            font-style: italic;
+            font-weight: 700;
+            white-space: nowrap;
+
+            @media (max-width: 1024px) {
+                font-size: 60px;
+            }
+
+            @media (max-width: 801px) {
+                font-size: 43px;
+            }
+
+            @media (max-width: 480px) {
+                font-size: 28px;
+                -webkit-text-stroke: 1px white;
+            }
+        }
+
+        &__banner {
+            img {
+                width: 100%;
+                height: 100vh;
+                object-fit: cover;
+
+                @media (max-width: 1024px) {
+                    height: 60vh;
+                }
+
+                @media (max-width: 480px) {
+                    font-size: 27px;
+                    -webkit-text-stroke: 1px white;
+                    height:auto;
+                }
+            }
+        }
+    }
+}

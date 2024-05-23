@@ -357,6 +357,294 @@ a, a:visited {
   }
 }
 
+.home-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.home-content .hero {
+  width: 100%;
+  position: relative;
+  margin-bottom: 80px;
+}
+@media (max-width: 1024px) {
+  .home-content .hero {
+    margin-bottom: 26px;
+  }
+}
+.home-content .hero__title {
+  font-size: 96px;
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: transparent; /* Set the text fill to transparent */
+  -webkit-text-stroke: 3px white;
+  font-style: italic;
+  font-weight: 700;
+  white-space: nowrap;
+}
+@media (max-width: 1024px) {
+  .home-content .hero__title {
+    font-size: 60px;
+  }
+}
+@media (max-width: 801px) {
+  .home-content .hero__title {
+    font-size: 43px;
+  }
+}
+@media (max-width: 480px) {
+  .home-content .hero__title {
+    font-size: 28px;
+    -webkit-text-stroke: 1px white;
+  }
+}
+.home-content .hero__banner img {
+  width: 100%;
+  height: 100vh;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+@media (max-width: 1024px) {
+  .home-content .hero__banner img {
+    height: 60vh;
+  }
+}
+@media (max-width: 480px) {
+  .home-content .hero__banner img {
+    font-size: 27px;
+    -webkit-text-stroke: 1px white;
+    height: auto;
+  }
+}
+
+.page-content {
+  margin: 38px 146px 0 146px;
+  /* CONTACT AND PREVIEW */
+}
+@media (max-width: 1024px) {
+  .page-content {
+    margin: 20px 25px 0 29px;
+  }
+}
+.page-content .single-photo-content {
+  display: flex;
+  font-size: 14px;
+}
+@media (max-width: 1024px) {
+  .page-content .single-photo-content {
+    display: flex;
+    flex-direction: column-reverse;
+    font-size: 14px;
+    margin: 0 29px 0 31px;
+  }
+}
+.page-content .infos-container {
+  width: 50%;
+  text-transform: uppercase;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 20px;
+  padding-bottom: 0;
+}
+@media (max-width: 1024px) {
+  .page-content .infos-container {
+    width: 100%;
+  }
+}
+.page-content .infos-container p {
+  margin: 0;
+  padding: 0;
+}
+@media (max-width: 481px) {
+  .page-content .infos-container p {
+    font-size: 13px;
+  }
+}
+.page-content .infos-container .photo-title {
+  max-width: 100%;
+  font-size: 50px;
+  font-style: italic;
+  line-height: 1;
+}
+@media (max-width: 1410px) {
+  .page-content .infos-container .photo-title {
+    font-size: 35px;
+  }
+}
+@media (max-width: 1200px) {
+  .page-content .infos-container .photo-title {
+    font-size: 25px;
+  }
+}
+@media (max-width: 1024px) {
+  .page-content .infos-container .photo-title {
+    margin-top: 20px;
+    font-size: 50px;
+    max-width: 481px;
+  }
+}
+@media (max-width: 481px) {
+  .page-content .infos-container .photo-title {
+    font-size: 20px;
+    max-width: 262px;
+  }
+}
+.page-content .photos-container {
+  width: 50%;
+}
+@media (max-width: 1024px) {
+  .page-content .photos-container {
+    width: 100%;
+  }
+}
+.page-content .photos-container img {
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.page-content .line {
+  display: flex;
+  flex-direction: row;
+  width: 96%;
+}
+@media (max-width: 1024px) {
+  .page-content .line {
+    width: 200vh;
+    margin-left: -60px;
+  }
+}
+.page-content .line hr {
+  width: 100%;
+  border: solid 1px black;
+  margin: 17px 0 0 0;
+}
+.page-content .separator {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+@media (max-width: 1024px) {
+  .page-content .separator {
+    width: 200vh;
+    margin-left: -60px;
+  }
+}
+.page-content .separator hr {
+  width: 100%;
+  border: solid 1px black;
+}
+.page-content .contact-content {
+  display: flex;
+  flex-direction: row;
+  height: 118px;
+}
+@media (max-width: 1024px) {
+  .page-content .contact-content {
+    margin: 0 29px 0 31px;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 24px;
+    margin-bottom: 24px;
+  }
+}
+.page-content .contact-content .contact, .page-content .contact-content .preview {
+  width: 50%;
+  height: 100%;
+}
+.page-content .contact-content .contact {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 0 45px 27px 0;
+}
+@media (max-width: 1140px) {
+  .page-content .contact-content .contact {
+    flex-direction: column;
+  }
+}
+@media (max-width: 1024px) {
+  .page-content .contact-content .contact {
+    flex-direction: column;
+    margin: 0 0 27px 0;
+    width: 263px;
+  }
+}
+.page-content .contact-content .contact .contact-text {
+  font-size: 14px;
+  font-weight: 300;
+  font-family: "Poppins";
+  align-self: center;
+}
+@media (max-width: 1140px) {
+  .page-content .contact-content .contact .contact-text {
+    margin-top: 20px;
+  }
+}
+@media (max-width: 1024px) {
+  .page-content .contact-content .contact .contact-text {
+    margin-top: 14px;
+    align-self: baseline;
+  }
+}
+.page-content .contact-content .contact .contact-btn {
+  width: 46%;
+}
+@media (max-width: 1140px) {
+  .page-content .contact-content .contact .contact-btn {
+    margin-bottom: 10px;
+  }
+}
+@media (max-width: 1024px) {
+  .page-content .contact-content .contact .contact-btn {
+    margin-bottom: 0;
+    width: 100%;
+  }
+}
+.page-content .contact-content .preview {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-end;
+  height: auto;
+}
+@media (max-width: 1024px) {
+  .page-content .contact-content .preview {
+    display: none;
+  }
+}
+.page-content .contact-content .preview .arrows {
+  display: flex;
+  flex-direction: row;
+  gap: 29px;
+  padding-bottom: 10px;
+}
+.page-content .contact-content .preview .arrows .arrow-link {
+  position: relative;
+}
+.page-content .contact-content .preview .arrows .arrow-link .hover-thumbnail {
+  display: none;
+  position: absolute;
+  z-index: 1;
+}
+.page-content .contact-content .preview .arrows .arrow-link .hover-thumbnail img {
+  width: 81px;
+  height: 71px;
+}
+.page-content .contact-content .preview .arrows .arrow-link.arrow-left:hover .hover-thumbnail.thumbnail-left {
+  display: block;
+  top: -80px;
+  left: 0px;
+}
+.page-content .contact-content .preview .arrows .arrow-link.arrow-right:hover .hover-thumbnail.thumbnail-right {
+  display: block;
+  top: -80px; /* Adjust the vertical distance for thumbnail-right */
+  left: -55px;
+}
+
 footer {
   width: 100%;
   position: static;
