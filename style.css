@@ -276,6 +276,7 @@ a, a:visited {
 .header__navDesktop li {
   display: inline-block;
   padding-left: 28px;
+  cursor: pointer;
 }
 .header__navDesktop li:hover {
   font-weight: 700;
