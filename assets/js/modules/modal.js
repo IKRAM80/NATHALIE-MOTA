@@ -1,19 +1,4 @@
 
-alert('Script loaded');
-
-jQuery(document).ready(function($) {
-    console.log("Document ready");
-    console.log(theme_vars.templateUrl);
-
-    if ($('.wpcf7-form').length) {
-        console.log("Formulaire trouvé");
-        $('.wpcf7-form').prepend('<img class="imgForm" src="' + theme_vars.templateUrl + '/assets/img/contact-header.png" alt="image contact">');
-    } else {
-        console.log("Formulaire non trouvé");
-    }
-});
-
-
 function initializeModal() {
     const contactBtns = jQuery(".menu-item-19 li, .contact-btn");
     const modalForm = jQuery(".modal-overlay");
@@ -51,8 +36,5 @@ function initializeModal() {
             jQuery(document).unbind("click", closeFormOutside);
         }
     }
-
-    
-
        
 }
