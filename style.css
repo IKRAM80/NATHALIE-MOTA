@@ -10,6 +10,30 @@ Text Domain: nathaliemota
 */
 @font-face {
   font-family: "Space Mono";
+  src: url("http://localhost:8080/nathalie-mota/wp-content/themes/nathalie-mota/assets/fonts/SpaceMono-Bold.woff2") format("woff2"), url("http://localhost:8080/nathalie-mota/wp-content/themes/nathalie-mota/assets/fonts/SpaceMono-Bold.woff") format("woff");
+  font-weight: bold;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Space Mono";
+  src: url("http://localhost:8080/nathalie-mota/wp-content/themes/nathalie-mota/assets/fonts/SpaceMono-Regular.woff2") format("woff2"), url("http://localhost:8080/nathalie-mota/wp-content/themes/nathalie-mota/assets/fonts/SpaceMono-Regular.woff") format("woff");
+  font-weight: bold;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Poppins";
+  src: url("http://localhost:8080/nathalie-mota/wp-content/themes/nathalie-mota/assets/fonts/Poppins-Regular.woff2") format("woff2"), url("http://localhost:8080/nathalie-mota/wp-content/themes/nathalie-mota/assets/fonts/Poppins-Regular.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Poppins";
+  src: url("/nathalie-mota/wp-content/themes/nathalie-mota/assets/fonts/Poppins-Regular.woff2") format("woff2"), url("/nathalie-mota/wp-content/themes/nathalie-mota/assets/fonts/Poppins-Regular.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Space Mono";
   src: url("fonts/SpaceMono-Regular.woff2") format("woff2");
   font-display: swap;
   font-style: normal;
@@ -145,6 +169,9 @@ a, a:visited {
   }
 }
 .modal-overlay .imgForm {
+  background-image: url("http://localhost:8080/nathalie-mota/wp-content/themes/nathalie-mota/assets/img/contact-header.png");
+  background-size: cover;
+  background-position: center;
   margin-top: 18px;
   margin-bottom: 21px;
 }
@@ -574,7 +601,7 @@ a, a:visited {
   }
 }
 .page-content .contact-content .contact .contact-text {
-  font-size: 14px;
+  font-size: 18px;
   font-weight: 300;
   font-family: "Poppins";
   align-self: center;

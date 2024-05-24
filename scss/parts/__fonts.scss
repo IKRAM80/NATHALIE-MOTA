@@ -1,4 +1,36 @@
 @font-face {
+  font-family: 'Space Mono';
+  src: url('http://localhost:8080/nathalie-mota/wp-content/themes/nathalie-mota/assets/fonts/SpaceMono-Bold.woff2') format('woff2'),
+       url('http://localhost:8080/nathalie-mota/wp-content/themes/nathalie-mota/assets/fonts/SpaceMono-Bold.woff') format('woff');
+  font-weight: bold;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Space Mono';
+  src: url('http://localhost:8080/nathalie-mota/wp-content/themes/nathalie-mota/assets/fonts/SpaceMono-Regular.woff2') format('woff2'),
+       url('http://localhost:8080/nathalie-mota/wp-content/themes/nathalie-mota/assets/fonts/SpaceMono-Regular.woff') format('woff');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Poppins';
+  src: url('http://localhost:8080/nathalie-mota/wp-content/themes/nathalie-mota/assets/fonts/Poppins-Regular.woff2') format('woff2'),
+       url('http://localhost:8080/nathalie-mota/wp-content/themes/nathalie-mota/assets/fonts/Poppins-Regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Poppins';
+  src: url('/nathalie-mota/wp-content/themes/nathalie-mota/assets/fonts/Poppins-Regular.woff2') format('woff2'),
+       url('/nathalie-mota/wp-content/themes/nathalie-mota/assets/fonts/Poppins-Regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+@font-face {
     font-family: 'Space Mono';
     src: url('fonts/SpaceMono-Regular.woff2') format("woff2");
     font-display: swap;
