@@ -5,10 +5,10 @@ get_header();
     <div class="hero">
         <h1 class="hero__title">PHOTOGRAPHE EVENT</h1>
 
-        <div class="hero__banner">
+    <div class="hero__banner">
         <?php
             $args = array(
-                'post_type' => 'photos',
+                'post_type' => 'photo',
                 'posts_per_page' => 1,
                 'orderby' => 'rand',
                 'tax_query' => array(
@@ -31,6 +31,7 @@ get_header();
             }
         ?>
         </div>
+        
     </div>
 
 

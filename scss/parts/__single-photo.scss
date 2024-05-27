@@ -68,6 +68,8 @@
   
     .photos-container {
       width: 50%;
+      display: flex;
+      
       
       @media (max-width: 1024px){
         width: 100%;
@@ -226,5 +228,57 @@
           }
         }
       }
+    }
+   /* YOU MAY ALSO LIKE */
+  
+   .gallery {
+    margin-top: 77px;
+
+    .you-may-also-like {
+      font-size: 18px;
+
+      @media (max-width: 1024px) {
+        text-align: center;
+      }
+    }
+
+    .gallery-container{
+      max-width: 100%;
+      padding: 20px 0;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr); 
+      gap: 20px; /* Écart horizontal */
+
+      @media (max-width: 1024px) {
+          grid-template-columns: repeat(1, 1fr);
+      }
+    }
+
+    @media (max-width: 801px) {
+      margin-top: 24px;
+    }
+  }
+
+
+
+  .btn-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 53px;
+      padding-bottom: 24px;
+
+      .home-btn {
+        display: inline-block;
+        width: 242px;
+        height: 37px;
+        text-align: center;
+        line-height: 3;
+      }
+
+      @media (max-width: 801px) {
+        display: none;
+      }
+
     }
 }
