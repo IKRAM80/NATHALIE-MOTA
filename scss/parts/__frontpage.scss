@@ -56,4 +56,39 @@
             }
         }
     }
+    .gallery-container{
+        max-width: 100%;
+        padding: 20px 0;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr); 
+        gap: 20px; /* Écart horizontal */
+
+        @media (max-width: 1024px) {
+            padding: 10px 29px;
+            grid-template-columns: repeat(1, 1fr);
+        }
+    }
 }
+
+.btn-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 53px;
+
+    @media (max-width: 801px) {
+        margin-top: 44px;
+    }
+
+    .more-btn {
+      display: inline-block;
+      width: 242px;
+      height: 37px;
+      text-align: center;
+      line-height: 3;
+    }
+
+  }
+
+
+      

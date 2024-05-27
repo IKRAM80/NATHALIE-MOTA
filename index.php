@@ -5,7 +5,7 @@ get_header();
     <div class="hero">
         <h1 class="hero__title">PHOTOGRAPHE EVENT</h1>
 
-    <div class="hero__banner">
+     <div class="hero__banner">
         <?php
             $args = array(
                 'post_type' => 'photo',
@@ -13,7 +13,7 @@ get_header();
                 'orderby' => 'rand',
                 'tax_query' => array(
                     array(
-                        'taxonomy' => 'formats',
+                        'taxonomy' => 'format',
                         'field' => 'slug',
                         'terms' => 'paysage',
                     ),
@@ -30,10 +30,39 @@ get_header();
                 wp_reset_postdata();
             }
         ?>
-        </div>
+     </div>
         
     </div>
+    
 
+     <div class="gallery-container">
+            <?php
+                $paged = get_query_var( 'paged', 1 );
+                $gallery = array(
+                    'post_type' => 'photo',
+                    'posts_per_page' => 8,
+                    'orderby' => 'date',
+                    'order' => 'ASC',
+                    'post_status' => 'publish',
+                    'paged' => $paged,
+                );
+
+                $query = new WP_Query($gallery);
+
+                if ($query->have_posts()){
+                    while ($query->have_posts()) : $query->the_post();
+                        get_template_part('assets/template-parts/photo-block');
+                    endwhile;
+                }
+            ?>
+     </div>
+    <div class="btn-container">
+            <a id="load-more" href="<?php echo home_url('/'); ?>">
+                <span class="btn more-btn">Charger plus</span>
+            </a>
+    </div>
+    
+</div>
 
 
 <?php
