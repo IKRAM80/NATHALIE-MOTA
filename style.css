@@ -406,7 +406,7 @@ a, a:visited {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  color: transparent; /* Set the text fill to transparent */
+  color: transparent; /*text transparent */
   -webkit-text-stroke: 3px white;
   font-style: italic;
   font-weight: 700;
@@ -760,11 +760,11 @@ a, a:visited {
   opacity: 1;
   transition: opacity 500ms ease-in-out;
 }
-.photo-suggested .photo {
+.photo-suggested .photo { /* l'image occupe toute la largeur disponible  */
   width: 100%;
   height: 45vh;
   -o-object-fit: cover;
-     object-fit: cover;
+     object-fit: cover; /* et couvre toute la zone disponible */
 }
 @media (max-width: 1024px) {
   .photo-suggested .photo {
@@ -776,7 +776,7 @@ a, a:visited {
     height: 40vh;
   }
 }
-.photo-suggested .overlay {
+.photo-suggested .overlay { /*Positionne l'overlay sur l'image, le rend transparent par défaut, et lui applique une transition pour l'opacité*/
   position: absolute;
   top: 0;
   left: 0;
@@ -787,12 +787,12 @@ a, a:visited {
   opacity: 0;
   transition: opacity 500ms ease-in-out;
 }
-.photo-suggested .overlay__full {
+.photo-suggested .overlay__full { /*l'élément enfant de .overlay occupe tout l'espace disponible de l'overlay*/
   position: relative;
   width: 100%;
   height: 100%;
 }
-.photo-suggested .overlay__full .open-photopage {
+.photo-suggested .overlay__full .open-photopage { /*Positionne un lien au centre de l'overlay et applique une animation de mise à l'échelle au survol*/
   position: absolute;
   top: 48%;
   left: 45%;
@@ -804,7 +804,7 @@ a, a:visited {
   transform: scale(1.2);
   transition: transform 500ms;
 }
-.photo-suggested .overlay__full .fullsize {
+.photo-suggested .overlay__full .fullsize { /* Positionne une icône de plein écran dans le coin supérieur droit de l'overlay, et applique une animation de mise à l'échelle et de rotation au survol*/
   width: 35px;
   height: 35px;
   position: absolute;
@@ -818,18 +818,18 @@ a, a:visited {
   transform: scale(1.2) rotate(180deg);
   transition: transform 500ms;
 }
-.photo-suggested .overlay__full .overlay-text {
+.photo-suggested .overlay__full .overlay-text { /*Définit la couleur, la police, la taille et la transformation du texte pour les éléments textuels de l'overlay*/
   color: white;
   font-family: "Poppins";
   font-size: 14px;
   text-transform: uppercase;
 }
-.photo-suggested .overlay__full .overlay-title {
+.photo-suggested .overlay__full .overlay-title { /*Positionne le titre en bas à gauche de l'overlay*/
   position: absolute;
   bottom: 1%;
   left: 3%;
 }
-.photo-suggested .overlay__full .overlay-category {
+.photo-suggested .overlay__full .overlay-category { /*Positionne la catégorie en bas à droite de l'overlay*/
   position: absolute;
   bottom: 1%;
   right: 3%;

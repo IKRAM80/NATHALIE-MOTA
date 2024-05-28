@@ -6,10 +6,10 @@
         transition: opacity 500ms ease-in-out;
     }
     
-    .photo {
+    .photo { /* l'image occupe toute la largeur disponible  */
         width: 100%;
         height: 45vh;
-        object-fit: cover;
+        object-fit: cover;/* et couvre toute la zone disponible */
 
         @media (max-width: 1024px) {
             height: 60vh;
@@ -20,7 +20,7 @@
         }
 
     }
-    .overlay {
+    .overlay {/*Positionne l'overlay sur l'image, le rend transparent par défaut, et lui applique une transition pour l'opacité*/
         position: absolute;
         top: 0;
         left: 0;
@@ -31,12 +31,12 @@
         opacity: 0;
         transition: opacity 500ms ease-in-out;
 
-        &__full {
+        &__full {/*l'élément enfant de .overlay occupe tout l'espace disponible de l'overlay*/
             position: relative;
             width: 100%;
             height: 100%;
 
-            .open-photopage {
+            .open-photopage {/*Positionne un lien au centre de l'overlay et applique une animation de mise à l'échelle au survol*/
                 position: absolute;
                 top: 48%;
                 left: 45%;
@@ -50,7 +50,7 @@
                 }
             }
 
-            .fullsize {
+            .fullsize {/* Positionne une icône de plein écran dans le coin supérieur droit de l'overlay, et applique une animation de mise à l'échelle et de rotation au survol*/
                 width: 35px;
                 height: 35px; 
                 position: absolute;
@@ -66,20 +66,20 @@
                 }
             }
 
-            .overlay-text {
+            .overlay-text {/*Définit la couleur, la police, la taille et la transformation du texte pour les éléments textuels de l'overlay*/
                 color: $color_3;
                 font-family: $font-family_2;
                 font-size: 14px; 
                 text-transform: uppercase;
             }
 
-            .overlay-title {
+            .overlay-title {/*Positionne le titre en bas à gauche de l'overlay*/
                 position: absolute;
                 bottom: 1%;
                 left: 3%;
             }
 
-            .overlay-category {
+            .overlay-category {/*Positionne la catégorie en bas à droite de l'overlay*/
                 position: absolute;
                 bottom: 1%;
                 right: 3%;
