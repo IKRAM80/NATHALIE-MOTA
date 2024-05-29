@@ -169,11 +169,13 @@ a, a:visited {
   }
 }
 .modal-overlay .imgForm {
-  background-image: url("http://localhost:8080/nathalie-mota/wp-content/themes/nathalie-mota/assets/img/contact-header.png");
+  background-image: url("./assets/img/contact-header.png");
   background-size: cover;
   background-position: center;
   margin-top: 18px;
   margin-bottom: 21px;
+  width: 100%; /* Définit la largeur de l'élément */
+  height: 150px; /* Définit une hauteur par défaut pour l'élément */
 }
 @media (max-width: 801px) {
   .modal-overlay .imgForm {
@@ -446,7 +448,21 @@ a, a:visited {
     height: auto;
   }
 }
-.home-content .gallery-container {
+.home-content .gallery-home {
+  width: 80%;
+}
+@media (max-width: 1140px) {
+  .home-content .gallery-home {
+    width: 85%;
+  }
+}
+@media (max-width: 801px) {
+  .home-content .gallery-home {
+    padding: 0;
+    width: 100%;
+  }
+}
+.home-content .gallery-home .gallery-container {
   max-width: 100%;
   padding: 20px 0;
   display: grid;
@@ -454,24 +470,23 @@ a, a:visited {
   gap: 20px; /* Écart horizontal */
 }
 @media (max-width: 1024px) {
-  .home-content .gallery-container {
+  .home-content .gallery-home .gallery-container {
     padding: 10px 29px;
     grid-template-columns: repeat(1, 1fr);
   }
 }
-
-.btn-container {
+.home-content .btn-container {
   display: flex;
   justify-content: center;
   align-items: center;
   margin-top: 53px;
 }
 @media (max-width: 801px) {
-  .btn-container {
+  .home-content .btn-container {
     margin-top: 44px;
   }
 }
-.btn-container .more-btn {
+.home-content .btn-container .more-btn {
   display: inline-block;
   width: 242px;
   height: 37px;
