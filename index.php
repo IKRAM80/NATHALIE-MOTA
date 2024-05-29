@@ -5,9 +5,9 @@ get_header();
     <div class="hero">
         <h1 class="hero__title">PHOTOGRAPHE EVENT</h1>
 
-     <div class="hero__banner">
-        <?php
-            $args = array(
+        <div class="hero__banner">
+          <?php
+             $args = array(
                 'post_type' => 'photo',// Rechercher des articles du type photo
                 'posts_per_page' => 1,// Limiter la recherche à un seul article
                 'orderby' => 'rand',// Trier les résultats de manière aléatoire
@@ -31,13 +31,13 @@ get_header();
                 endwhile;
                 wp_reset_postdata();
             }
-        ?>
-     </div>
+          ?>
+        </div>
         
     </div>
     
-<div class="gallery-home">
-     <div class="gallery-container">
+    <div class="gallery-home">
+        <div class="gallery-container">
             <?php
             //Récupèrer le numéro de page de la requête actuelle. Si aucune page n'est définie, utilise 1 par défaut
                 $paged = get_query_var( 'paged', 1 );
@@ -60,13 +60,13 @@ get_header();
                     endwhile;
                 }
             ?>
-     </div>
-    <div class="btn-container">
+        </div>
+        <div class="btn-container">
             <a id="load-more" href="<?php echo home_url('/'); ?>">
                 <span class="btn more-btn">Charger plus</span>
             </a>
+        </div>
     </div>
-    
 </div>
 
 
