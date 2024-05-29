@@ -73,37 +73,48 @@ get_header();
          <hr>
     </div>
     <div>
-       <div class="gallery">
-             <p class="you-may-also-like">VOUS AIMEREZ AUSSI</p>
-        <div class="gallery-container">
+    <div class="gallery">
+                    <p class="you-may-also-like">VOUS AIMEREZ AUSSI</p>
+          <div class="gallery-container">
             <?php
-            $current_post_id = get_the_ID(); // Récupère l'ID de la photo actuelle 
-            $current_category = get_the_terms(get_the_ID(), 'category'); // Récupère les termes de taxonomie associés à cette photo        
-            $category_name = $current_category ? $current_category[0]->slug : ''; // Obtient le slug de la première catégorie associée à cette photo
-            // Crée un tableau d'arguments pour interroger les publications
-            $args = array(
-                'post_type' => 'photo', // Récupérer que les publications du type photo 
-                'category_name' => $category_name, // Filtrer les photos de la même catégorie 
-                'posts_per_page' => 2, // Récupérer deux photos 
-                'orderby' => 'rand', // Obtenir des photos aléatoires 
-                'post__not_in'   => array($current_post_id), // Exclut la photo actuelle de la requête 
+             $current_post_id = get_the_ID();//Récupère l'ID de la photo actuelle
+
+             $current_category = get_the_terms($current_post_id, 'categorie');//Récupère les termes de la taxonomie 'categorie' pour la photo actuelle
+
+             if ($current_category && !is_wp_error($current_category)) {//Vérifie si les termes ont été récupérés correctement
+             $category_name = $current_category[0]->slug;//Si oui, obtient le slug de la première catégorie
+                } else {
+                   $category_name = '';//Si non, initialise $category_name à une chaîne vide
+                }
+
+             $args = array(//Crée un tableau $args pour les arguments de la requête
+                  'post_type' => 'photo',//Spécifie le type de publication (photos)
+                  'posts_per_page' => 2,// Limite la requête à 2 photos
+                  'orderby' => 'rand',// Trie les photos de manière aléatoire
+                  'post__not_in' => array($current_post_id),//Exclut la photo actuelle de la requête
+                  'tax_query' => array(// Requête basée sur la taxonomie 'categorie' et le slug récupéré
+                     array(
+                   'taxonomy' => 'categorie',
+                   'field' => 'slug',
+                   'terms' => $category_name,
+                   ),
+               ),
             );
 
-            // Exécute la requête avec les arguments définis
-            $query = new WP_Query($args);
-                        if ($query->have_posts()){
-                            // Boucle à travers chaque publication trouvée
-                            while ($query->have_posts()) : $query->the_post();
-                                // Inclut le fichier template-part 'photo-block' pour afficher chaque photo
-                                get_template_part('assets/template-parts/photo-block');
-                            endwhile;
-                        } else {
-                            ?> <p> Cette catégorie n'a pas d'autres photos. </p> <?php
-                        }
-            wp_reset_postdata(); // Réinitialise les données de publication après la boucle.
+            $query = new WP_Query($args);//Exécute la requête avec les arguments définis
+            if ($query->have_posts()) {//Vérifie si des photos ont été trouvées
+                while ($query->have_posts()) : $query->the_post();//Boucle sur chaque photo trouvée
+                   // Inclut le template-part 'photo-block' pour afficher chaque photo
+                   get_template_part('assets/template-parts/photo-block');
+                endwhile;
+            } else {
+                  echo '<p> Cette catégorie n\'a pas d\'autres photos. </p>';
+            }
+            wp_reset_postdata();
             ?>
         </div>
-      </div>
+
+    </div>
    </div>
    <div class="btn-container">
     <a href="<?php echo home_url('/'); ?>"><!--obtenir et imprimer l'URL de la page d'accueil du site WordPress-->
