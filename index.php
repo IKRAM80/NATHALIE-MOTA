@@ -37,6 +37,7 @@ get_header();
     </div>
     
     <div class="gallery-home">
+        
         <div class="gallery-container">
             <?php
             //Récupèrer le numéro de page de la requête actuelle. Si aucune page n'est définie, utilise 1 par défaut

@@ -90,7 +90,7 @@ get_header();
              $args = array(//Crée un tableau $args pour les arguments de la requête
                   'post_type' => 'photo',//Spécifie le type de publication (photos)
                   'posts_per_page' => 2,// Limite la requête à 2 photos
-                  'orderby' => 'rand',// Trie les photos de manière aléatoire
+                  'orderby' => 'ASC',// Trie les photos par ordre croissant de la saisie à modifier selon le tri par date de prise de vue***
                   'post__not_in' => array($current_post_id),//Exclut la photo actuelle de la requête
                   'tax_query' => array(// Requête basée sur la taxonomie 'categorie' et le slug récupéré
                      array(
