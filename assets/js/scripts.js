@@ -6,5 +6,8 @@ jQuery(document).ready(function($) {
     initializeMenu();//initialisation du menu de navigation burger
     initializeModal();
     initializeArrowPositions();
+    initializeSelect2();
+    initializeFilters();
+    initializeLoadMore();
     
 });
