@@ -46,6 +46,7 @@ add_filter('wp_nav_menu_items', 'add_elements_menus', 10, 2);
      wp_enqueue_script('select-2', get_template_directory_uri() . '/assets/js/modules/select2.js', array('jquery'), null, true);
      wp_enqueue_script('filters', get_template_directory_uri() . '/assets/js/modules/filters.js', array('jquery'), null, true);
      wp_enqueue_script('load-more', get_template_directory_uri() . '/assets/js/modules/loadMore.js', array('jquery'), null, true);
+     wp_enqueue_script('lightbox', get_template_directory_uri() . '/assets/js/modules/lightbox.js', array('jquery'), null, true);
      wp_enqueue_script('script', get_template_directory_uri() . '/assets/js/scripts.js', array('jquery'), null, true);
 
      //localiser les données de script avec wp_localize_script, ce qui permet de passer des variables PHP à mon JavaScript. Dans ce cas, il passe l'URL 

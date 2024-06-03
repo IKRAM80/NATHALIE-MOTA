@@ -9,5 +9,6 @@ jQuery(document).ready(function($) {
     initializeSelect2();
     initializeFilters();
     initializeLoadMore();
+    initializeLightbox();
     
 });
