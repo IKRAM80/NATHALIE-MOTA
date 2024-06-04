@@ -1,6 +1,5 @@
 // FILTERS
 
-jQuery(document).ready(function($) {
 function initializeFilters() {
     let activeCategory = 'all';
     let activeFormat = 'all';
@@ -23,6 +22,9 @@ function initializeFilters() {
         let category = jQuery('#categories').val();
         let format = jQuery('#formats').val();
         let sortByDate = jQuery('#sort-by-date').val();
+        console.log(category)
+        console.log(format)
+        console.log(sortByDate)
 
         // Update active filter states
         activeCategory = category;
@@ -36,7 +38,7 @@ function initializeFilters() {
 
         jQuery.ajax({
             type: 'POST',
-            url: ajax_object.ajax_url,
+            url: '../wp-admin/admin-ajax.php',
             data: {
                 action: 'ajaxFilter',
                 category: category,
@@ -47,15 +49,7 @@ function initializeFilters() {
                 jQuery('.gallery-container').html(response);
 
                 // Show the "Load More" button if no filters are active
-                if (!areFiltersActive()) {
-                    $('#load-more').show();
-                }
-            },
-            error: function(error) {
-                console.log('Erreur AJAX : ', error);
             }
         });
     }
 }
-initializeFilters();
-});

@@ -43,8 +43,7 @@ add_action('wp_ajax_nopriv_loadMore', 'loadMore');
 // FILTERS AND SORT
 
 function ajaxFilter() {
-    // Log POST data
-    error_log(print_r($_POST, true));
+    
     // Récupère les filtres envoyés via la requête AJAX
     $category = isset($_POST['category']) ? $_POST['category'] : '';
     $format = isset($_POST['format']) ? $_POST['format'] : '';
@@ -86,8 +85,6 @@ function ajaxFilter() {
         endwhile;
         $content = ob_get_clean();// Obtient le contenu tamponné et le stocke dans $content
         echo $content;// Affiche le contenu
-    }else {
-        echo 'No posts found';
     }
 
     die(); // Termine l'exécution pour que WordPress n'ajoute rien à la réponse
