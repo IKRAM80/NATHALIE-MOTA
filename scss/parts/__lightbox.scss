@@ -1,15 +1,15 @@
 .lightbox {
-    display:none;
-	position: fixed;
+    display:none;//masquer initialement la lightbox
+	position: fixed;// par rapport à la fenêtre du navigateur
     justify-content: center;
     align-items: center;
-	z-index: 1000;
-	top: 0;
+	z-index: 1000;//s'affiche au-dessus des autres éléments de la page
+	top: 0;//étendre la lightbox sur toute la fenêtre du navigateur, en utilisant les valeurs "0" pour les positions top, left, bottom et right
 	left: 0;
 	bottom: 0;
 	right: 0;
 	background-color: rgba(0, 0, 0, 0.8)!important;
-	background-size: contain;
+	background-size: contain;//ajuster la taille de l'image de fond de la lightbox pour qu'elle s'adapte à la taille de la lightbox elle-même.
 	background-repeat: no-repeat;
 	background-position: center;
 	cursor: pointer;
@@ -46,7 +46,7 @@
         transform: rotate(0);
         transition: transform 500ms;
 
-        &:hover {
+        &:hover {//rotation et  transitions lors du survol
             transform: rotate(180deg);
             transition: transform 500ms;
         }
@@ -105,7 +105,7 @@
         .lightbox-photo {
             max-height: 1024px;
             max-width: 68%;
-            object-fit: contain;
+            object-fit: contain;//ajustement de l'objet pour l'image
 
             @media (max-width: 801px) {
                 max-height: none;
