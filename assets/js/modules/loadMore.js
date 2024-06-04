@@ -10,7 +10,7 @@ function initializeLoadMore() {
 
         jQuery.ajax({
             type: 'POST',
-            url: './wp-admin/admin-ajax.php', // Use the absolute URL provided by WordPress
+            url: 'http://localhost:8080/nathalie-mota/wp-admin/admin-ajax.php', // Use the absolute URL provided by WordPress
             dataType: 'json',
             data: {
                 action: 'loadMore',

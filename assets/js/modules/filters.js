@@ -22,23 +22,20 @@ function initializeFilters() {
         let category = jQuery('#categories').val();
         let format = jQuery('#formats').val();
         let sortByDate = jQuery('#sort-by-date').val();
-        console.log(category)
-        console.log(format)
-        console.log(sortByDate)
-
+        
         // Update active filter states
         activeCategory = category;
         activeFormat = format;
         activeSortByDate = sortByDate;
 
-        // Hide the "Load More" button if filters are active
+        //cacher le bouton charger plus si les filtres sont activés
         if (areFiltersActive()) {
             jQuery('#load-more').hide();
         }
 
         jQuery.ajax({
             type: 'POST',
-            url: '../wp-admin/admin-ajax.php',
+            url: 'http://localhost:8080/nathalie-mota/wp-admin/admin-ajax.php', 
             data: {
                 action: 'ajaxFilter',
                 category: category,
@@ -48,7 +45,7 @@ function initializeFilters() {
             success: function(response) {
                 jQuery('.gallery-container').html(response);
 
-                // Show the "Load More" button if no filters are active
+                // montrer le bouton charger plus si les filtres ne sont pas activés
             }
         });
     }
