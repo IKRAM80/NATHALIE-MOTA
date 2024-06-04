@@ -54,8 +54,13 @@ add_filter('wp_nav_menu_items', 'add_elements_menus', 10, 2);
      wp_localize_script('modal-script', 'theme_vars', array(
         'templateUrl' => get_template_directory_uri()
     ));
+    // Localiser le script ajax
+    wp_localize_script('filters', 'ajax_object', array(
+        'ajax_url' => admin_url('admin-ajax.php')
+    ));
+}
     
- }
+ 
  
 // Enlever <p> et <br/> de Contact Form 7
 add_filter('wpcf7_autop_or_not', '__return_false');

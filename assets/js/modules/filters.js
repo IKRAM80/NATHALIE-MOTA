@@ -1,5 +1,6 @@
 // FILTERS
 
+jQuery(document).ready(function($) {
 function initializeFilters() {
     let activeCategory = 'all';
     let activeFormat = 'all';
@@ -35,7 +36,7 @@ function initializeFilters() {
 
         jQuery.ajax({
             type: 'POST',
-            url: './wp-admin/admin-ajax.php',
+            url: ajax_object.ajax_url,
             data: {
                 action: 'ajaxFilter',
                 category: category,
@@ -46,7 +47,15 @@ function initializeFilters() {
                 jQuery('.gallery-container').html(response);
 
                 // Show the "Load More" button if no filters are active
+                if (!areFiltersActive()) {
+                    $('#load-more').show();
+                }
+            },
+            error: function(error) {
+                console.log('Erreur AJAX : ', error);
             }
         });
     }
 }
+initializeFilters();
+});
