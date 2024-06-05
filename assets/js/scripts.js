@@ -1,14 +1,19 @@
-jQuery(document).ready(function($) {
-//utiliser jQuery pour attendre que le document soit prêt avant d'exécuter le code JavaScript.
-//La fonction $ dans les parenthèses permet d'utiliser jQuery avec l'alias $, facilitant ainsi l'écriture du code jQuery.   
 
-    localStorage.clear();// vide le stockage local du navigateur
-    initializeMenu();//initialisation du menu de navigation burger
+document.addEventListener('DOMContentLoaded', function() {
+    // Vide le stockage local du navigateur
+    localStorage.clear();
+    // Initialise le menu de navigation burger
+    initializeMenu();
+    // Initialise la modal
     initializeModal();
+    // Initialise les positions des flèches
     initializeArrowPositions();
+    // Initialise Select2
     initializeSelect2();
+    // Initialise les filtres
     initializeFilters();
+    // Initialise le chargement supplémentaire
     initializeLoadMore();
+    // Initialise la lightbox
     initializeLightbox();
-    
 });

@@ -1,60 +1,71 @@
-// OPEN LIGHTBOX
+// Déclarez les variables globalement
+let lightbox, closeIcon, prevButton, nextButton;
+let currentIndex = 0; // Suivre l'index de la photo actuellement affichée dans la lightbox
+
 function initializeLightbox() {
-    //attache un gestionnaire d'événement de clic à tous les éléments avec la classe "fullsize" dans le document
-    openLightbox(jQuery(this).closest('.photo-suggested'));
-    jQuery(document).on('click', '.fullsize', function() {
+    // Initialisez les variables à l'intérieur de la fonction pour garantir que le DOM est prêt
+    lightbox = document.querySelector(".lightbox");
+    closeIcon = document.querySelector(".lightbox__close");
+    prevButton = document.querySelector(".lightbox__prev");
+    nextButton = document.querySelector(".lightbox__next");
+
+    // Attachez un gestionnaire d'événement de clic à tous les éléments avec la classe "fullsize" dans le document
+    document.addEventListener('click', function(event) {
+        if (event.target.classList.contains('fullsize')) {
+            openLightbox(event.target.closest('.photo-suggested'));
+        }
     });
 
-    const lightbox = jQuery(".lightbox");//sélectionne l'élément avec la classe "lightbox" et le stocke dans la variable lightbox
-    const closeIcon = jQuery(".lightbox__close");
-    const prevButton = jQuery(".lightbox__prev");
-    const nextButton = jQuery(".lightbox__next");
-
-    let currentIndex = 0; // suivre l'index de la photo actuellement affichée dans la lightbox
-
-    closeIcon.click(closeLightbox);//gestionnaire d'événement de clic à l'icône de fermeture de la lightbox
-    prevButton.click(showPreviousPhoto);//gestionnaire d'événement de clic au bouton précédent de la lightbox
-    nextButton.click(showNextPhoto);//gestionnaire d'événement de clic au bouton suivant de la lightbox
+    closeIcon.addEventListener('click', closeLightbox); // Gestionnaire d'événement de clic à l'icône de fermeture de la lightbox
+    prevButton.addEventListener('click', showPreviousPhoto); // Gestionnaire d'événement de clic au bouton précédent de la lightbox
+    nextButton.addEventListener('click', showNextPhoto); // Gestionnaire d'événement de clic au bouton suivant de la lightbox
 
     function openLightbox(photo) {
-        //fonction appelée lorsque l'utilisateur clique sur une image avec la classe "fullsize"
-        const photoSrc = photo.data('photo-src');
-        const photoRef = photo.data('photo-ref');
-        const photoCategory = photo.data('photo-category');
-        //récupèrer les informations de la photo cliquée
-        //mettre à jour le contenu de la lightbox avec ces informations
-        jQuery('.lightbox-photo').attr('src', photoSrc);
-        jQuery('.lightbox__ref').text(photoRef);
-        jQuery('.lightbox__category').text(photoCategory);
+        // Fonction appelée lorsque l'utilisateur clique sur une image avec la classe "fullsize"
+        const photoSrc = photo.getAttribute('data-photo-src');
+        const photoRef = photo.getAttribute('data-photo-ref');
+        const photoCategory = photo.getAttribute('data-photo-category');
+        // Récupère les informations de la photo cliquée
+        // Met à jour le contenu de la lightbox avec ces informations
+        document.querySelector('.lightbox-photo').setAttribute('src', photoSrc);
+        document.querySelector('.lightbox__ref').textContent = photoRef;
+        document.querySelector('.lightbox__category').textContent = photoCategory;
 
-        // mettre à jour l'index de la photo actuelle
-        currentIndex = jQuery(".photo-suggested").index(photo);
-        //ajoute la classe "active" à la lightbox pour l'afficher
-        lightbox.addClass("active");
+        // Mettre à jour l'index de la photo actuelle
+        currentIndex = Array.from(document.querySelectorAll(".photo-suggested")).indexOf(photo);
+        // Ajoute la classe "active" à la lightbox pour l'afficher
+        lightbox.classList.add("active");
     }
 
     function closeLightbox() {
-        //fonction appelée lorsque l'utilisateur clique sur le bouton précédent de la lightbox
-        lightbox.removeClass("active");
+        // Fonction appelée lorsque l'utilisateur clique sur le bouton de fermeture de la lightbox
+        lightbox.classList.remove("active");
     }
 
     function showPreviousPhoto() {
-        // mettre à jour l'index de la photo actuelle pour afficher la photo précédente
-        currentIndex = (currentIndex - 1 + jQuery(".photo-suggested").length) % jQuery(".photo-suggested").length;
+        // Met à jour l'index de la photo actuelle pour afficher la photo précédente
+        const photos = document.querySelectorAll(".photo-suggested");
+        currentIndex = (currentIndex - 1 + photos.length) % photos.length;
 
-        const prevPhoto = jQuery(".photo-suggested").eq(currentIndex);
+        const prevPhoto = photos[currentIndex];
 
-        // appeler la fonction openLightbox() pour afficher les informations de la photo précédente
+        // Appeler la fonction openLightbox() pour afficher les informations de la photo précédente
         openLightbox(prevPhoto);
     }
 
     function showNextPhoto() {
-        // mettre à jour l'index de la photo actuelle pour afficher la photo suivante
-        currentIndex = (currentIndex + 1) % jQuery(".photo-suggested").length;
+        // Met à jour l'index de la photo actuelle pour afficher la photo suivante
+        const photos = document.querySelectorAll(".photo-suggested");
+        currentIndex = (currentIndex + 1) % photos.length;
 
-        const nextPhoto = jQuery(".photo-suggested").eq(currentIndex);
+        const nextPhoto = photos[currentIndex];
 
-        // appeler la fonction openLightbox() pour afficher les informations de la photo suivante
+        // Appeler la fonction openLightbox() pour afficher les informations de la photo suivante
         openLightbox(nextPhoto);
     }
 }
+
+// Utiliser l'écouteur d'événements DOMContentLoaded pour attendre que le document soit prêt
+document.addEventListener('DOMContentLoaded', function() {
+    initializeLightbox();
+});
