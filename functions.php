@@ -29,7 +29,7 @@ add_filter('wp_nav_menu_items', 'add_elements_menus', 10, 2);
 
 // Enqueuing
 
- include_once get_template_directory() . 'assets/inc/ajax-functions.php';
+ include_once get_template_directory() . '/assets/inc/ajax-functions.php';
 
  add_action('wp_enqueue_scripts', 'nathalie_mota_enqueue_styles');
  function nathalie_mota_enqueue_styles() {

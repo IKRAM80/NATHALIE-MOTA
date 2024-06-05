@@ -19,12 +19,12 @@ function initializeFilters() {
     });
 
     function ajaxFilter() {
-        let category = jQuery('#categories').val();
+        let categorie = jQuery('#categories').val();
         let format = jQuery('#formats').val();
         let sortByDate = jQuery('#sort-by-date').val();
 
         // Update active filter states
-        activeCategory = category;
+        activeCategory = categorie;
         activeFormat = format;
         activeSortByDate = sortByDate;
 
@@ -38,7 +38,7 @@ function initializeFilters() {
             url: 'http://localhost:8080/nathalie-mota/wp-admin/admin-ajax.php',
             data: {
                 action: 'ajaxFilter',
-                category: category,
+                categorie: categorie,
                 format: format,
                 sortByDate: sortByDate
             },

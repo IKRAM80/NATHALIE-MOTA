@@ -6,14 +6,14 @@ function loadMore() {
     $posts_per_page = 8;
 
     $ajaxposts = new WP_Query(array(
-        'post_type'      => 'photo',
+        'post_type'      => 'photos',
         'posts_per_page' => $posts_per_page,
         'orderby'        => 'date',
         'order'          => 'ASC',
         'post_status'    => 'publish',
         'paged'          => $paged,
     ));
-
+    
     $response = '';
     $has_more_posts = false;
 
@@ -21,6 +21,14 @@ function loadMore() {
         ob_start(); // Start output buffering
 
         while ($ajaxposts->have_posts()) : $ajaxposts->the_post();
+        // Utilisez les balises HTML et les boucles appropriées pour afficher les images
+        ?>
+        <div class="photo-block">
+            <img src="<?php echo get_the_post_thumbnail_url(); ?>" alt="<?php the_title(); ?>">
+            <h3><?php the_title(); ?></h3>
+            <p><?php the_content(); ?></p>
+        </div>
+        <?php
             get_template_part('assets/template-parts/photo-block');
         endwhile;
         
@@ -31,7 +39,7 @@ function loadMore() {
         wp_reset_postdata();
     }
 
-    echo json_encode(array('html' => $response, 'has_more_posts' => $has_more_posts));
+    echo wp_json_encode(array('html' => $response, 'has_more_posts' => $has_more_posts));
     wp_die();
 }
 
@@ -42,10 +50,10 @@ add_action('wp_ajax_nopriv_loadMore', 'loadMore');
 // FILTERS AND SORT
 
 function ajaxFilter() {
-    $category = isset($_POST['category']) ? $_POST['category'] : '';
+    $category = isset($_POST['categorie']) ? $_POST['categorie'] : '';
     $format = isset($_POST['format']) ? $_POST['format'] : '';
     $sortByDate = isset($_POST['sortByDate']) ? $_POST['sortByDate'] : '';
-
+    
     // Check if any filters are selected
 
     $gallery_args = array(
@@ -59,7 +67,7 @@ function ajaxFilter() {
 
     if ($category && $category !== 'all') {
         $gallery_args['tax_query'][] = array(
-            'taxonomy' => 'category',
+            'taxonomy' => 'categorie',
             'field' => 'slug',
             'terms' => $category,
         );
@@ -81,13 +89,14 @@ function ajaxFilter() {
             get_template_part('assets/template-parts/photo-block');
         endwhile;
         $content = ob_get_clean();
-        echo $content;
+        
     }
+    $response = array('html' => $content);
+    echo json_encode($response);
 
     die();
 }
 add_action('wp_ajax_ajaxFilter', 'ajaxFilter');
 add_action('wp_ajax_nopriv_ajaxFilter', 'ajaxFilter'); // For non-logged in users
-var_dump("La requête a bien été traitée par WordPress.");
-	var_dump( $post_id );
+
 ?>
