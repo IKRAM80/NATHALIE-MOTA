@@ -38,7 +38,7 @@ function initializeFilters() {
             url: 'http://localhost:8080/nathalie-mota/wp-admin/admin-ajax.php',
             data: {
                 action: 'ajaxFilter',
-                category: categorie,
+                category: category,
                 format: format,
                 sortByDate: sortByDate
             },
