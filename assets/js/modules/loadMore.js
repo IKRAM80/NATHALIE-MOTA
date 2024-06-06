@@ -5,29 +5,40 @@ function initializeLoadMore() {
     let currentPage = 1;
 
     loadMore.on('click', function(event) {
-        console.log('Le script JS a bien été chargé');
         event.preventDefault();
         currentPage++;
 
+        // Vérifie si ajax_object est défini et si ajax_url est défini à l'intérieur
+        if (typeof ajax_object === 'undefined' || !ajax_object.ajax_url) {
+            console.error('L\'URL de l\'endpoint AJAX est manquante ou non définie.');
+            return;
+        }
+
         jQuery.ajax({
             type: 'POST',
-            url: 'http://localhost:8080/nathalie-mota/wp-admin/admin-ajax.php', // Use the absolute URL provided by WordPress
+            url: ajax_object.ajax_url, // Utilisez l'URL fournie par WordPress
             dataType: 'json',
             data: {
-                action: 'loadMore',
+                action: 'loadMore', // Action pour déclencher la fonction PHP
                 paged: currentPage,
             },
             success: function(response) {
-                jQuery('.gallery-container').append(response.html);
-
-                checkIfMorePosts(response);
+                if (response.success) {
+                    jQuery('.gallery-container').append(response.data.html);
+                    checkIfMorePosts(response.data.has_more_posts);
+                } else {
+                    console.error('Erreur lors de la récupération des publications.');
+                }
             },
+            error: function(xhr, status, error) {
+                console.error('Erreur AJAX:', status, error);
+            }
         });
     });
 }
 
-function checkIfMorePosts(res) {
-    if (!res.has_more_posts) {
+function checkIfMorePosts(hasMorePosts) {
+    if (!hasMorePosts) {
         loadMore.hide();
         console.log('Response : Has no more posts');
     } else {
@@ -35,3 +46,7 @@ function checkIfMorePosts(res) {
         console.log('Response : Has more posts');
     }
 }
+
+jQuery(document).ready(function($) {
+    initializeLoadMore();
+});
