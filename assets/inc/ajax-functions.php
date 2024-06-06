@@ -21,14 +21,7 @@ function loadMore() {
         ob_start(); // Start output buffering
 
         while ($ajaxposts->have_posts()) : $ajaxposts->the_post();
-        // Utilisez les balises HTML et les boucles appropriées pour afficher les images
-        ?>
-        <div class="photo-block">
-            <img src="<?php echo get_the_post_thumbnail_url(); ?>" alt="<?php the_title(); ?>">
-            <h3><?php the_title(); ?></h3>
-            <p><?php the_content(); ?></p>
-        </div>
-        <?php
+        
             get_template_part('assets/template-parts/photo-block');
         endwhile;
         
@@ -39,7 +32,7 @@ function loadMore() {
         wp_reset_postdata();
     }
 
-    echo wp_json_encode(array('html' => $response, 'has_more_posts' => $has_more_posts));
+    echo json_encode(array('html' => $response, 'has_more_posts' => $has_more_posts));
     wp_die();
 }
 
@@ -88,13 +81,13 @@ function ajaxFilter() {
         while ($query->have_posts()) : $query->the_post();
             get_template_part('assets/template-parts/photo-block');
         endwhile;
-        $content = ob_get_clean();
-        
+        $content = ob_get_clean();  
+        echo $content; // Ajoutez cette ligne pour afficher le contenu généré
+    wp_send_json_success($content);
     }
-    $response = array('html' => $content);
-    echo json_encode($response);
-
-    die();
+    
+    // Return the response
+    wp_send_json_success($content);
 }
 add_action('wp_ajax_ajaxFilter', 'ajaxFilter');
 add_action('wp_ajax_nopriv_ajaxFilter', 'ajaxFilter'); // For non-logged in users

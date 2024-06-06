@@ -32,6 +32,9 @@ function initializeFilters() {
         if (areFiltersActive()) {
             jQuery('#load-more').hide();
         }
+        console.log('Categorie:', categorie);
+        console.log('Format:', format);
+        console.log('Sort By Date:', sortByDate);
 
         jQuery.ajax({
             type: 'POST',
