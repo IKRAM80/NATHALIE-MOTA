@@ -8,43 +8,31 @@ function initializeLoadMore() {
         event.preventDefault();
         currentPage++;
 
-        // Vérifie si ajax_object est défini et si ajax_url est défini à l'intérieur
-        if (typeof ajax_object === 'undefined' || !ajax_object.ajax_url) {
-            console.error('L\'URL de l\'endpoint AJAX est manquante ou non définie.');
-            return;
-        }
-
         jQuery.ajax({
             type: 'POST',
-            url: ajax_object.ajax_url, // Utilisez l'URL fournie par WordPress
+            url: 'http://localhost:8080/nathalie-mota/wp-admin/admin-ajax.php',
             dataType: 'json',
             data: {
-                action: 'loadMore', // Action pour déclencher la fonction PHP
+                action: 'loadMore',
                 paged: currentPage,
             },
             success: function(response) {
-                if (response.success) {
-                    jQuery('.gallery-container').append(response.data.html);
-                    checkIfMorePosts(response.data.has_more_posts);
+                if (response && response.hasOwnProperty('html') && response.hasOwnProperty('has_more_posts')) {
+                    jQuery('.gallery-container').append(response.html);
+
+                    if (!response.has_more_posts) {
+                        loadMore.hide();
+                        console.log('Response: Has no more posts');
+                    }
                 } else {
-                    console.error('Erreur lors de la récupération des publications.');
+                    console.error('Invalid AJAX response structure');
                 }
             },
             error: function(xhr, status, error) {
-                console.error('Erreur AJAX:', status, error);
+                console.error('Error:', status, error);
             }
         });
     });
-}
-
-function checkIfMorePosts(hasMorePosts) {
-    if (!hasMorePosts) {
-        loadMore.hide();
-        console.log('Response : Has no more posts');
-    } else {
-        loadMore.show();
-        console.log('Response : Has more posts');
-    }
 }
 
 jQuery(document).ready(function($) {

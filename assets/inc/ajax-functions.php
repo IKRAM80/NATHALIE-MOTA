@@ -1,19 +1,18 @@
 <?php
-// LOAD MORE
 
 function loadMore() {
     $paged = $_POST['paged'];
-    $posts_per_page = -1;
+    $posts_per_page = 8;
 
     $ajaxposts = new WP_Query(array(
-        'post_type'      => 'photos',
+        'post_type'      => 'photo',
         'posts_per_page' => $posts_per_page,
         'orderby'        => 'date',
         'order'          => 'ASC',
         'post_status'    => 'publish',
         'paged'          => $paged,
     ));
-    
+
     $response = '';
     $has_more_posts = false;
 
@@ -21,7 +20,6 @@ function loadMore() {
         ob_start(); // Start output buffering
 
         while ($ajaxposts->have_posts()) : $ajaxposts->the_post();
-        
             get_template_part('assets/template-parts/photo-block');
         endwhile;
         
@@ -52,7 +50,7 @@ function ajaxFilter() {
 
     // Check if any filters are selected
     $gallery_args = array(
-        'post_type'      => 'photos',
+        'post_type'      => 'photo',
         'posts_per_page' => -1,
         'orderby'        => 'date',
         'order'          => ($sortByDate === 'DESC') ? 'DESC' : 'ASC',
@@ -92,6 +90,7 @@ function ajaxFilter() {
         wp_send_json_error('No posts found');
     }
 }
+
 
 add_action('wp_ajax_ajaxFilter', 'ajaxFilter');
 add_action('wp_ajax_nopriv_ajaxFilter', 'ajaxFilter'); // For non-logged in users
