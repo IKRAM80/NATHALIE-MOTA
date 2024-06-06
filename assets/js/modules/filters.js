@@ -19,12 +19,12 @@ function initializeFilters() {
     });
 
     function ajaxFilter() {
-        let categorie = jQuery('#categories').val();
+        let category = jQuery('#categories').val();
         let format = jQuery('#formats').val();
         let sortByDate = jQuery('#sort-by-date').val();
 
         // Update active filter states
-        activeCategory = categorie;
+        activeCategory = category;
         activeFormat = format;
         activeSortByDate = sortByDate;
 
@@ -32,16 +32,13 @@ function initializeFilters() {
         if (areFiltersActive()) {
             jQuery('#load-more').hide();
         }
-        console.log('Categorie:', categorie);
-        console.log('Format:', format);
-        console.log('Sort By Date:', sortByDate);
 
         jQuery.ajax({
             type: 'POST',
             url: 'http://localhost:8080/nathalie-mota/wp-admin/admin-ajax.php',
             data: {
                 action: 'ajaxFilter',
-                categorie: categorie,
+                category: categorie,
                 format: format,
                 sortByDate: sortByDate
             },

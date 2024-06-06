@@ -44,33 +44,34 @@ add_action('wp_ajax_nopriv_loadMore', 'loadMore');
 // FILTERS AND SORT
 
 function ajaxFilter() {
-    $category = isset($_POST['categorie']) ? $_POST['categorie'] : '';
+    $category = isset($_POST['category']) ? $_POST['category'] : '';
     $format = isset($_POST['format']) ? $_POST['format'] : '';
     $sortByDate = isset($_POST['sortByDate']) ? $_POST['sortByDate'] : '';
 
     // Check if any filters are selected
+
     $gallery_args = array(
-        'post_type'      => 'photo',
+        'post_type' => 'photo',
         'posts_per_page' => -1,
-        'orderby'        => 'date',
-        'order'          => ($sortByDate === 'DESC') ? 'DESC' : 'ASC',
-        'post_status'    => 'publish',
-        'paged'          => 1,
+        'orderby' => 'date',
+        'order' => ($sortByDate === 'DESC') ? 'DESC' : 'ASC',
+        'post_status' => 'publish',
+        'paged' => 1,
     );
 
     if ($category && $category !== 'all') {
         $gallery_args['tax_query'][] = array(
             'taxonomy' => 'categorie',
-            'field'    => 'slug',
-            'terms'    => $category,
+            'field' => 'slug',
+            'terms' => $category,
         );
     }
 
     if ($format && $format !== 'all') {
         $gallery_args['tax_query'][] = array(
             'taxonomy' => 'format',
-            'field'    => 'slug',
-            'terms'    => $format,
+            'field' => 'slug',
+            'terms' => $format,
         );
     }
 
@@ -82,15 +83,11 @@ function ajaxFilter() {
             get_template_part('assets/template-parts/photo-block');
         endwhile;
         $content = ob_get_clean();
-
-        // Return the response
-        wp_send_json_success($content);
-    } else {
-        // If no posts found, return an empty response
-        wp_send_json_error('No posts found');
+        echo $content;
     }
+
+    die();
 }
-
-
 add_action('wp_ajax_ajaxFilter', 'ajaxFilter');
 add_action('wp_ajax_nopriv_ajaxFilter', 'ajaxFilter'); // For non-logged in users
+?>
