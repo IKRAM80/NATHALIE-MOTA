@@ -17,24 +17,20 @@ function initializeLoadMore() {
                 paged: currentPage,
             },
             success: function(response) {
-                if (response && response.hasOwnProperty('html') && response.hasOwnProperty('has_more_posts')) {
+
                     jQuery('.gallery-container').append(response.html);
 
-                    if (!response.has_more_posts) {
-                        loadMore.hide();
-                        console.log('Response: Has no more posts');
-                    }
-                } else {
-                    console.error('Invalid AJAX response structure');
-                }
+                    checkIfMorePosts(response);
             },
-            error: function(xhr, status, error) {
-                console.error('Error:', status, error);
-            }
         });
     });
 }
-
-jQuery(document).ready(function($) {
-    initializeLoadMore();
-});
+function checkIfMorePosts(res) {
+    if (!res.has_more_posts) {
+        loadMore.hide();
+        console.log('Response : Has no more posts');
+    } else {
+        loadMore.show();
+        console.log('Response : Has more posts');
+    }
+}
