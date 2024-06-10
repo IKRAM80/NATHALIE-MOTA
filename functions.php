@@ -61,11 +61,4 @@ add_filter('wp_nav_menu_items', 'add_elements_menus', 10, 2);
  
 // Enlever <p> et <br/> de Contact Form 7
 add_filter('wpcf7_autop_or_not', '__return_false');
-// Dans functions.php ou dans votre plugin
-function add_ajax_object() {
-    $ajax_object = array(
-        'ajax_url' => admin_url('admin-ajax.php'),
-    );
-    wp_localize_script('load-more', 'ajax_object', $ajax_object);
-}
-add_action('wp_enqueue_scripts', 'add_ajax_object');
+
