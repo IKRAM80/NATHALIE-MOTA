@@ -1,10 +1,13 @@
 // FILTERS
+
+//Ces variables stockent les valeurs actuelles des filtres
+let activeCategory = 'all';
+let activeFormat = 'all';
+let activeSortByDate = 'all';
+
 function initializeFilters() {
     
-       //Ces variables stockent les valeurs actuelles des filtres
-        let activeCategory = 'all';
-        let activeFormat = 'all';
-        let activeSortByDate = 'all';
+       
 
         //Sélectionner les éléments HTML et définir leurs valeurs initiales à 'all
         document.getElementById('categories').value = activeCategory;
@@ -70,4 +73,4 @@ function initializeFilters() {
     }
     
     //Appeller la fonction initializeFilters pour initialiser les filtres et configurer les gestionnaires d'événements.
-    initializeFilters();
+    
