@@ -95,5 +95,5 @@ function ajaxFilter() {
     die();
 }
 add_action('wp_ajax_ajaxFilter', 'ajaxFilter');
-add_action('wp_ajax_nopriv_ajaxFilter', 'ajaxFilter'); // For non-logged in users
-?>
+add_action('wp_ajax_nopriv_ajaxFilter', 'ajaxFilter');
+
