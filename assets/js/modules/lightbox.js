@@ -1,3 +1,4 @@
+// OPEN LIGHTBOX
 // Déclarez les variables globalement
 let lightbox, closeIcon, prevButton, nextButton;
 let currentIndex = 0; // Suivre l'index de la photo actuellement affichée dans la lightbox

@@ -47,10 +47,6 @@ add_action('wp_ajax_loadMore', 'loadMore');
 //et pour les utilisateurs non connectés 
 add_action('wp_ajax_nopriv_loadMore', 'loadMore');
 
-
-
-
-
 // FILTERS AND SORT
 
 function ajaxFilter() {
