@@ -32,7 +32,7 @@ function initializeLoadMore() {//Déclarer la fonction initializeLoadMore
         };
         //Définir les paramètres à envoyer avec la requête POST(action et numéro de page)
         const params = `action=loadMore&paged=${currentPage}`;
-        //Envoiyer la requête avec les paramètres définis
+        //Envoyer la requête avec les paramètres définis
         xhr.send(params);
     });
 }
