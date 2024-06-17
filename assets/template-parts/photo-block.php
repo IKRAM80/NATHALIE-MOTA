@@ -1,4 +1,4 @@
-
+<!-- Début de la division contenant les informations suggérées sur la photo -->
 <div class="photo-suggested" data-photo-src="<?php echo get_the_post_thumbnail_url(); ?>" 
                              data-photo-prev="<?php echo esc_url(get_permalink(get_previous_post())); ?>" 
                              data-photo-next="<?php echo esc_url(get_permalink(get_next_post())); ?>"
@@ -12,6 +12,7 @@
                 <!--image à l'intérieur du lien représentant une icône d'œil-->
                 <img src="<?php echo get_template_directory_uri(); ?>/assets/img/icon_eye.png" alt="Ouvrir la page de la photo">
             </a>
+            <!-- Icône pour voir l'image en plein écran -->
             <img class="fullsize icon" src="<?php echo get_template_directory_uri(); ?>/assets/img/icon_fullscreen.png" alt="Voir l'image en plein écran">
             <!-- afficher le titre de la photo actuelle-->
             <p class="overlay-title overlay-text"><?php echo get_the_title(); ?></p>

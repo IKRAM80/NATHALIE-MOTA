@@ -549,8 +549,8 @@ a, a:visited {
 
 .page-content {
   margin: 38px 146px 0 146px;
-  /* CONTACT AND PREVIEW */
-  /* YOU MAY ALSO LIKE */
+  /* CONTACT */
+  /* VOUS AIMEREZ AUSSI */
 }
 @media (max-width: 1024px) {
   .page-content {
