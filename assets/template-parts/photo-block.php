@@ -15,7 +15,7 @@
             <!-- Icône pour voir l'image en plein écran -->
             <img class="fullsize icon" src="<?php echo get_template_directory_uri(); ?>/assets/img/icon_fullscreen.png" alt="Voir l'image en plein écran">
             <!-- afficher le titre de la photo actuelle-->
-            <p class="overlay-title overlay-text"><?php echo esc_attr(get_field('reference')); ?></p>
+            <p class="overlay-title overlay-text"><?php echo get_the_title(); ?></p>
             <!--afficher le nom de la catégorie de la photo actuelle-->
             <p class="overlay-category overlay-text"><?php echo get_the_terms(get_the_ID(), 'categorie')[0]->name; ?></p>                                
           </div>
