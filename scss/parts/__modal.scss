@@ -8,14 +8,24 @@
     background-color: rgba(0,0,0,0.75);
     display: none;
       
-    #wpcf7-f25-o1 {
-        position:fixed;
+    .modaleFinale {
+        position: fixed;
         left: 50%;
         top: 50%;
-        transform: translate(-50%,-50%);
+        transform: translate(-50%, -50%);
+        width: 597px; /* Largeur par défaut */
+
+        @media (max-width: 801px) {
+            width: 286px; /* Ajustement pour les écrans jusqu'à 801px de largeur */
+            left: 5%; /* Position vers la gauche pour les petits écrans */
+            transform: translate(0, -50%); /* Centre verticalement */
+        }
+
+        @media (max-width: 359px) {
+            width: 250px; /* Ajustement supplémentaire pour les écrans très petits */
+        }
     }
-     
-   
+ 
 
     .contactForm {
         display: flex;
@@ -30,14 +40,14 @@
         @media (max-width: 801px){
             width: 286px;
             height: auto; 
-            overflow: hidden;
-            
+        overflow: hidden;
         }
 
         @media (max-width: 359px){
             width: 250px;
             height: auto; 
-            overflow: hidden;
+        overflow: hidden;
+            
         }
     }
       

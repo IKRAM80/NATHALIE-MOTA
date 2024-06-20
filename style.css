@@ -114,11 +114,24 @@ a, a:visited {
   background-color: rgba(0, 0, 0, 0.75);
   display: none;
 }
-.modal-overlay #wpcf7-f25-o1 {
+.modal-overlay .modaleFinale {
   position: fixed;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
+  width: 597px; /* Largeur par défaut */
+}
+@media (max-width: 801px) {
+  .modal-overlay .modaleFinale {
+    width: 286px; /* Ajustement pour les écrans jusqu'à 801px de largeur */
+    left: 5%; /* Position vers la gauche pour les petits écrans */
+    transform: translate(0, -50%); /* Centre verticalement */
+  }
+}
+@media (max-width: 359px) {
+  .modal-overlay .modaleFinale {
+    width: 250px; /* Ajustement supplémentaire pour les écrans très petits */
+  }
 }
 .modal-overlay .contactForm {
   display: flex;
@@ -337,6 +350,7 @@ a, a:visited {
   justify-content: center;
   gap: 18px;
   height: 850px;
+  margin-left: 50px;
   padding: 0;
   font-size: 44px;
   color: white;
@@ -344,7 +358,13 @@ a, a:visited {
 @media (max-width: 480px) {
   .header__navMobile #menu-menu-principal-1 {
     height: 400px;
+    margin-left: -160px;
   }
+}
+.header__navMobile #menu-menu-principal-1 li {
+  padding-left: 0; /* Remet à zéro le padding pour les petits écrans */
+  width: auto; /* Ajuste la largeur pour l'alignement au centre */
+  text-align: center; /* Aligne le texte à gauche */
 }
 @media (max-width: 801px) {
   .header__navMobile {

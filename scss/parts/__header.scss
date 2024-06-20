@@ -64,6 +64,8 @@
             background-color: $background-color_5;
             z-index: 1000;
             margin-top: 50px;
+                     
+            
         }
         
         #menu_burger.active {
@@ -74,6 +76,7 @@
 
         .nav_burger .close {
             font-size: 50px;
+            
         }
       
         .navMobile-top {
@@ -91,13 +94,21 @@
             justify-content: center;
             gap: 18px;
             height: 850px;
+            margin-left: 50px;
             padding: 0;
             font-size: 44px;
             color: $color_3;
 
             @media (max-width: 480px) {
                 height: 400px;
+                margin-left: -160px;
                 
+            }
+            li {
+                padding-left: 0; /* Remet à zéro le padding pour les petits écrans */
+                
+                width: auto; /* Ajuste la largeur pour l'alignement au centre */
+                text-align: center; /* Aligne le texte à gauche */
             }
         }
 
